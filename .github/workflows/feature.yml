@@ -38,4 +38,6 @@ jobs:
           path: .
 
       - name: Run
-        run: ./hello
+        run: |
+          chmod +x ./hello
+          ./hello
