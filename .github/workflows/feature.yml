@@ -19,22 +19,23 @@ jobs:
           go-version: 1.26
         
       - name: Build binary
-        run: go build -o main main.go
+        run: go build -o hello hello.go
 
       - name: Upload binary
         uses: actions/upload-artifact@v7
         with:
-          name: main
-          path: main
+          name: hello
+          path: hello
 
   run:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Download binary
         uses: actions/download-artifact@v8
         with:
-          name: main
+          name: hello
           path: .
 
       - name: Run
-        run: ./main
+        run: ./hello
